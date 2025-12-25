@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Alerts{% endblock %}
+
+{% block content %}
+<h1>Alerts</h1>
+
+<ul>
+    {% for alert in alerts %}
+        <li>
+            <strong>{{ alert.event.event_type }}</strong>
+            ({{ alert.event.severity }})<br>
+
+            Status: {{ alert.status }}<br>
+
+            <small>
+                Event created at: {{ alert.event.created_at }}<br>
+                Alert created at: {{ alert.created_at }}
+            </small>
+        </li>
+    {% empty %}
+        <li>No alerts found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

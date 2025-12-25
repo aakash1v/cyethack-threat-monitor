@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Threat Monitor{% endblock %}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{% block meta_description %}Security monitoring dashboard{% endblock %}">
+
+    <!-- Tailwind CSS (CDN for internal dashboard) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    {% block css %}{% endblock %}
+</head>
+
+<body class="h-full bg-gray-50 text-gray-900">
+
+<header class="bg-white border-b shadow-sm">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        <!-- Brand -->
+        <div class="flex items-center space-x-6">
+            <span class="text-lg font-semibold tracking-tight">
+                Threat Monitor
+            </span>
+
+            {% if user.is_authenticated %}
+                <a
+                    href="/"
+                    class="text-sm text-gray-600 hover:text-gray-900"
+                >
+                    Dashboard
+                </a>
+
+                <!-- <a -->
+                <!--     href="/alerts/" -->
+                <!--     class="text-sm text-gray-600 hover:text-gray-900" -->
+                <!-- > -->
+                <!--     Alerts -->
+                <!-- </a> -->
+
+                <a
+                    href="/api/docs/"
+                    target="_blank"
+                    class="text-sm text-gray-600 hover:text-gray-900"
+                >
+                    API Docs
+                </a>
+
+                {% if user.is_staff %}
+                    <a
+                        href="/admin/"
+                        target="_blank"
+                        class="text-sm text-gray-600 hover:text-gray-900"
+                    >
+                        Admin
+                    </a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <!-- User actions -->
+        <div class="flex items-center space-x-4">
+            {% if user.is_authenticated %}
+                <span class="text-sm text-gray-600">
+                    {{ user.username }}
+                </span>
+
+                <form
+                    method="post"
+                    action="{% url 'logout' %}"
+                    class="inline"
+                >
+                    {% csrf_token %}
+                    <button
+                        type="submit"
+                        class="text-sm font-medium text-red-600 hover:text-red-700"
+                    >
+                        Logout
+                    </button>
+                </form>
+            {% else %}
+                <a
+                    href="{% url 'login' %}"
+                    class="text-sm font-medium text-blue-600 hover:text-blue-700"
+                >
+                    Login
+                </a>
+            {% endif %}
+        </div>
+
+    </nav>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-8">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="border-t bg-white">
+    <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-500 flex justify-between">
+        <span>
+            &copy; {% now "Y" %} Threat Monitor
+        </span>
+        <span>
+            Internal Security Platform
+        </span>
+    </div>
+</footer>
+
+{% block js %}{% endblock %}
+</body>
+</html>
+

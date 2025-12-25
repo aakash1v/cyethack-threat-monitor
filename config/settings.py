@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     "rest_framework.authtoken",
     "drf_spectacular",
+    "widget_tweaks",
 
     "users",
     "threats",
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -164,4 +165,11 @@ LOGGING = {
         "level": "INFO",
     },
 }
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/login/"
+
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [BASE_DIR / "static",]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
