@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-print(settings.AUTH_USER_MODEL)
+# print(settings.AUTH_USER_MODEL)
 
 
 class UserRole(models.TextChoices):
