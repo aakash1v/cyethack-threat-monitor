@@ -61,6 +61,17 @@ using Django signals to ensure consistency.
 
 ---
 
+## Environment variables
+
+```bash
+  DEBUG=False
+  SECRET_KEY=change-this-secret-key
+  ALLOWED_HOSTS=p1.aakash1.online,127.0.0.1,localhost
+
+
+```
+---
+
 ## Setup Instructions
 
 ```bash
