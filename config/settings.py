@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
+    "widget_tweaks",
 
     # Local apps
     "users",
@@ -204,4 +205,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 X_FRAME_OPTIONS = "DENY"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/login/"
 
