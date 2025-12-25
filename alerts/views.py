@@ -7,6 +7,12 @@ from users.permissions import IsAnalystReadOnly, IsAdmin
 
 
 class AlertListAPIView(generics.ListAPIView):
+    """
+    List all alerts.
+    - Admin: full access
+    - Analyst: read-only access
+    Supports filtering by status and severity.
+    """
     queryset = Alert.objects.select_related("event")
     serializer_class = AlertSerializer
     permission_classes = [IsAuthenticated, IsAnalystReadOnly]
