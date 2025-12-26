@@ -8,6 +8,26 @@ The system is designed as a simplified backend module that could integrate with
 surveillance systems, SIEM tools, or AI-based threat detection engines.
 
 ---
+## Live Deployment
+
+The backend is deployed and accessible at:
+
+  - Base URL: https://p1.aakash1.online
+  - Swagger API Docs: https://p1.aakash1.online/api/docs/
+
+HTTPS is enabled using Let’s Encrypt and Nginx.
+
+## Sample User Credentials (For Testing)
+```bash
+  User Type : Admin
+  Username  : admin
+  Password  : password113
+  
+  User Type : Analyst
+  Username  : analyst
+  Password  : password113
+
+```
 
 ## Features
 - JWT-based authentication
